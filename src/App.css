@@ -1,38 +1,99 @@
+body {
+  font-family: sans-serif;
+}
+
+input,button {
+  border: none;
+  outline: none;
+}
+
 .App {
-  text-align: center;
-}
+  max-width: 1600px;
+  background-color: rgb(196, 210, 210);
+  border-radius: 7px;
+  padding: 20px;
+  margin: 0 auto;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 60px
+}
+
+.search {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.search input {
+  width: 200px;
+  height: 50px;
+  font-size: 24px;
+  padding: 25px 20px;
+  border: 1px solid rgb(123, 75, 75);
+  border-radius: 9px;
+  width: 70%;
+}
+
+.search h2 {
+  color:rgb(138, 134, 129)
+}
+
+.grid {
+
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  column-gap: 15px;
+  row-gap: 10px;
+  margin-top: 15px;
+
+}
+
+.grid .country {
+  background-color: rgb(97, 101, 104);
+  color: rgb(135, 186, 195);
+  
+}
+
+.countries {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  column-gap: 30px;
+  row-gap: 30px;
+}
+
+.country {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgb(127, 145, 162);
+  padding: 10px;
+  border-radius: 7px;
+  color: rgb(46, 55, 190);
+}
+
+.pagination-wrapper {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.pagination {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+button {
+  width: 45px;
+  height: 40px;
+  border: none;
+  outline: none;
+  background-color: rgb(164, 169, 170);
+  border-radius: 5px;
+  color: rgb(105, 116, 203);
+}
+
+.active {
+  background-color: red;
 }

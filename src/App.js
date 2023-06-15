@@ -1,23 +1,75 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect, useState } from 'react';
+
+import Countries from "./components/Countries";
+import Pagination from './components/Pagination';
+import Search from "./components/Search";
+
+
 
 function App() {
+
+  const [pageNumber, setPageNumber] = useState(1);
+  const [countriesArray, setCountriesArray] = useState( [] );
+  const [pageAccumulates] = useState(9);
+  const [loaded, setLoaded] = useState(false);
+
+  const [searchValue, setSearchValue] = useState("");
+  
+
+  useEffect( () => {
+    async function getCountries(url) {
+      try {
+        console.log("query")
+        let data = await fetch( url );
+        let countries = await data.json();
+        console.log(countries);
+        setCountriesArray(countries);
+        setLoaded(true)
+        return await countries;
+      }
+      catch(error) {
+        console.error(error)
+        return false
+      }
+      
+    }
+    getCountries("https://restcountries.com/v3.1/all")
+  }, [] )
+
+
+
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Search
+
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        countriesArray={countriesArray}
+
+      />
+
+     <Countries
+        countriesArray={countriesArray}
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+        pageAccumulates={pageAccumulates}
+        countriesArrayLength={countriesArray.length}
+        setLoaded={setLoaded}
+        loaded={loaded}
+
+     />
+
+    <Pagination 
+     
+        pageNumber={pageNumber}
+        setPageNumber={setPageNumber}
+        countriesArrayLength={countriesArray.length}
+        pageAccumulates={pageAccumulates}
+     />
     </div>
   );
 }
