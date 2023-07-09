@@ -4,7 +4,9 @@ import { useEffect, useState } from 'react';
 import Countries from "./components/Countries";
 import Pagination from './components/Pagination';
 import Search from "./components/Search";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
+import SeparateCountry from "./components/SeparateCountry";
 
 
 function App() {
@@ -42,35 +44,54 @@ function App() {
 
 
   return (
+    <BrowserRouter>
     <div className="App">
 
-      <Search
 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}
-        countriesArray={countriesArray}
+    
+      <Routes>
+          <Route path="/" element={<>  
+          
+            <Search
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}
+              countriesArray={countriesArray}
+            />
 
-      />
+          
+          <Countries
+            countriesArray={countriesArray}
+            pageNumber={pageNumber}
+            setPageNumber={setPageNumber}
+            pageAccumulates={pageAccumulates}
+            countriesArrayLength={countriesArray.length}
+            setLoaded={setLoaded}
+            loaded={loaded}
 
-     <Countries
-        countriesArray={countriesArray}
-        pageNumber={pageNumber}
-        setPageNumber={setPageNumber}
-        pageAccumulates={pageAccumulates}
-        countriesArrayLength={countriesArray.length}
-        setLoaded={setLoaded}
-        loaded={loaded}
+            />
+            
+            
+            <Pagination 
+              pageNumber={pageNumber}
+              setPageNumber={setPageNumber}
+              countriesArrayLength={countriesArray.length}
+              pageAccumulates={pageAccumulates}
+            />
+            
+             </> 
+          } />
 
-     />
+          <Route path="/:name" element={<SeparateCountry
+              countriesArray={countriesArray}
+              loaded={loaded}
+          />}/>
 
-    <Pagination 
-     
-        pageNumber={pageNumber}
-        setPageNumber={setPageNumber}
-        countriesArrayLength={countriesArray.length}
-        pageAccumulates={pageAccumulates}
-     />
+      </Routes>
+
+
+    
     </div>
+    </BrowserRouter>
   );
 }
 

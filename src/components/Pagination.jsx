@@ -4,7 +4,6 @@ import ButtonPagination from './ButtonPagination';
 const Pagination = (props) => {
   const buttons = [];
   const numberOfPages = Math.ceil(props.countriesArrayLength / props.pageAccumulates);
-  console.log(numberOfPages)
 
   for( let i = 1; i <= numberOfPages; i++ ) {
     if( props.pageNumber == i ) {

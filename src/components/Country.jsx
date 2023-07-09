@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
 const Country = (props) => {
   return (
+    <NavLink to={ `/${props.name}` } >
     <div className='country' >
       <h2>Name: {props.name}</h2>
       <h3>Capital: {props.capital}</h3>
@@ -9,8 +11,10 @@ const Country = (props) => {
       <img src={props.flag} alt="" />
         </div>
       <p>Population: {props.population}</p>
-      <p><a href={props.mapLink}>Map Link</a> </p>
+      <p><Link to={props.mapLink}>Map Link</Link> </p>
     </div>
+    </NavLink>
+
   )
 }
 
