@@ -1,4 +1,13 @@
-# Getting Started with Create React App
+# A simple React application for searching a country by its name
+The exercise was completed while learning and practising React. The emphasis here was on practising the usage of external API in React.
+# Features
+- Accepts the name of the country and returns the detailed infromation about that country, the name of which at least partially matches the input.
+
+# IMPORTANT NOTE
+The owner of the API has discontinued the /all endpoint because of the enormous traffic which he has to pay for, and so the app will not work, as it was originally designed to work with the /all endpoint only. For more detailed info see the [link](https://gitlab.com/restcountries/restcountries/-/issues/265).
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
